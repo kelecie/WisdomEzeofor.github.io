@@ -53,27 +53,31 @@ I combine technical cybersecurity knowledge with real-world IT support experienc
 ## Certifications & Education
 
 **Master of Science - Cybersecurity**  
-[Your University] | [Year]
+[Northumbria University] | [2023 - 2025]
 
 **Certifications:**
-- [List any current certs, or put "In Progress: CompTIA Security+" if studying]
+-
 
 ---
 
 ## Professional Experience
 
 **First Line Support Engineer**  
-*Essex Fire and Rescue Service | [Start Date] - Present*
+*Essex Fire and Rescue Service | [October 2025] - Present*
 
 Supporting critical IT infrastructure for emergency services operations across Essex. Responsibilities include technical troubleshooting, system administration, and maintaining security-conscious IT support practices in a high-availability environment.
+Troubleshoot and resolve technical issues while maintaining security awareness and incident reporting protocols.
+Collaborate with IT team to maintain system availability and security for 1,000+ users.
+
+Gained hands-on experience with network infrastructure, access controls, and system administration in a security-sensitive environment.
 
 ---
 
 ## Contact & Connect
 
-- **LinkedIn:** [Your LinkedIn URL]
-- **GitHub:** [Your GitHub URL]
-- **Email:** your.email@example.com
+- **LinkedIn:** (https://www.linkedin.com/in/kelechiezeofor)L]
+- **GitHub:**WisdomEzeofor.github.io
+- **Email:** 
 
 I'm actively seeking opportunities in Security Analysis and IT Security Management. Open to networking, collaboration, and discussing cybersecurity challenges.
 
