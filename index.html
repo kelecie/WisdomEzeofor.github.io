@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdom Ezeofor - Cybersecurity Portfolio</title>
+    <style>
+        @import url("https://fonts.cdnfonts.com/css/majel");
+        @import url("https://fonts.cdnfonts.com/css/vw-headline-book");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "VW Headline Book", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-theme {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.light-theme .subtitle-box,
+        body.light-theme .contact-link {
+            border-color: #000000;
+            color: #000000;
+        }
+
+        body.light-theme .divider {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-theme .skill-category,
+        body.light-theme .project-card {
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-theme .skill-category:hover,
+        body.light-theme .project-card:hover {
+            border-color: rgba(0, 0, 0, 0.5);
+        }
+
+        body.light-theme .skill-category li:before,
+        body.light-theme .experience-item li:before {
+            color: #7a6a53;
+        }
+
+        body.light-theme .coming-soon-badge {
+            background: rgba(122, 106, 83, 0.2);
+            color: #7a6a53;
+        }
+
+        body.light-theme .contact-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-theme .theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .theme-toggle .sun-icon {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        .theme-toggle .moon-icon {
+            position: absolute;
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        body.light-theme .theme-toggle .sun-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        body.light-theme .theme-toggle .moon-icon {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 60px 80px;
+            gap: 60px;
+        }
+
+        .content-left {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .main-title {
+            font-family: "Majel", sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 1.1;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .subtitle-box {
+            display: inline-block;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            padding: 20px 40px;
+            font-family: "VW Headline Book", sans-serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+        }
+
+        .content-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .image-container {
+            position: relative;
+            width: 500px;
+            height: 650px;
+            max-width: 100%;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #9b8568 0%, #7a6a53 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-family: "VW Headline Book", sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #ffffff;
+            text-decoration: none;
+            transition: transform 0.3s ease, gap 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateX(10px);
+            gap: 25px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .content-section {
+            padding: 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: "Majel", sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 80px 0;
+        }
+
+        .about-content {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            padding: 20px 0;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .skill-category h3 {
+            font-family: "Majel", sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #9b8568;
+        }
+
+        .project-card {
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            font-family: "Majel", sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .experience-item {
+            margin-bottom: 50px;
+        }
+
+        .experience-item h3 {
+            font-family: "Majel", sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .experience-meta {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .experience-item li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .experience-item li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #9b8568;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 80px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(155, 133, 104, 0.3);
+            color: #9b8568;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .content-left {
+                max-width: 100%;
+            }
+
+            .content-right {
+                align-items: center;
+            }
+
+            .image-container {
+                width: 400px;
+                height: 520px;
+            }
+
+            .content-section {
+                padding: 60px 40px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-section {
+                padding: 30px 20px;
+            }
+
+            .image-container {
+                width: 320px;
+                height: 420px;
+            }
+
+            .content-section {
+                padding: 40px 20px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .footer {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" fill="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="moon-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <section class="hero-section">
+        <div class="content-left">
+            <h1 class="main-title">Wisdom Kelechi Ezeofor</h1>
+            <p class="subtitle">Cybersecurity Portfolio</p>
+            <div class="subtitle-box">
+                Security Analyst | IT Security Management
+            </div>
+        </div>
+        
+        <div class="content-right">
+            <div class="image-container">
+                <div class="image-wrapper">
+                    <img src="https://drive.google.com/uc?export=view&id=1sQctkjKVDpm-Juw8g7hcf_DeBR2Qii3G" 
+                         alt="Wisdom Ezeofor" 
+                         class="profile-image">
+                </div>
+            </div>
+            
+            <a href="#contact" class="cta-button">
+                <span class="arrow">↳</span>
+                <span>Let's Connect</span>
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="about" class="content-section">
+        <h2 class="section-title">Welcome</h2>
+        <p class="about-content">
+            I'm a cybersecurity professional with an MSc in Cybersecurity and hands-on IT experience supporting critical infrastructure at Essex Fire and Rescue Service. This portfolio showcases my journey into security analysis and management.
+        </p>
+        <p class="about-content">
+            I combine technical cybersecurity knowledge with real-world IT support experience in high-stakes environments. My focus is on security operations, risk management, and building practical solutions that protect organizations while enabling business objectives.
+        </p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Current Role</div>
+                <div class="info-value">First Line Support Engineer<br>Essex Fire and Rescue Service</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Education</div>
+                <div class="info-value">MSc Cybersecurity<br>Northumbria University</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Career Goal</div>
+                <div class="info-value">Security Analyst /<br>IT Security Management</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="skills" class="content-section">
+        <h2 class="section-title">Skills & Expertise</h2>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Security Domains</h3>
+                <ul>
+                    <li>Security Operations & Monitoring</li>
+                    <li>Threat Intelligence & Analysis</li>
+                    <li>Incident Response</li>
+                    <li>Risk Assessment & Management</li>
+                    <li>Security Policy Development</li>
+                    <li>Compliance & Frameworks (ISO 27001, NIST CSF)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li>SIEM Platforms (Splunk, ELK)</li>
+                    <li>Network Security & Analysis</li>
+                    <li>Vulnerability Assessment</li>
+                    <li>Log Analysis</li>
+                    <li>Python Scripting for Security</li>
+                    <li>Linux & Windows Administration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="projects" class="content-section">
+        <h2 class="section-title">Portfolio Projects</h2>
+        <p class="about-content" style="font-style: italic; opacity: 0.8;">
+            This portfolio is actively under development. Projects will be added throughout 2025.
+        </p>
+
+        <div class="project-card">
+            <h3>Home Security Lab Documentation <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>SIEM setup and configuration</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Threat Intelligence Reports <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>Analysis using MITRE ATT&CK framework</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Incident Response Case Studies <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>Tabletop exercises and documentation</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Security Automation Scripts <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>Python tools for security tasks</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Risk Assessment Projects <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>Public sector security analysis</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Security Policies & Procedures <span class="coming-soon-badge">Coming Soon</span></h3>
+            <p>Framework-aligned documentation</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="education" class="content-section">
+        <h2 class="section-title">Certifications & Education</h2>
+        
+        <div class="experience-item">
+            <h3>Master of Science - Cybersecurity</h3>
+            <p class="experience-meta">Northumbria University | 2023 - 2025</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Certifications</h3>
+            <p class="about-content" style="opacity: 0.8;">Certifications in progress</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="experience" class="content-section">
+        <h2 class="section-title">Professional Experience</h2>
+        
+        <div class="experience-item">
+            <h3>First Line Support Engineer</h3>
+            <p class="experience-meta">Essex Fire and Rescue Service | October 2025 - Present</p>
+            <p class="about-content">
+                Supporting critical IT infrastructure for emergency services operations across Essex. Responsibilities include technical troubleshooting, system administration, and maintaining security-conscious IT support practices in a high-availability environment.
+            </p>
+            <ul>
+                <li>Troubleshoot and resolve technical issues while maintaining security awareness and incident reporting protocols</li>
+                <li>Collaborate with IT team to maintain system availability and security for 1,000+ users</li>
+                <li>Gained hands-on experience with network infrastructure, access controls, and system administration in a security-sensitive environment</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="contact" class="content-section">
+        <h2 class="section-title">Contact & Connect</h2>
+        <p class="about-content">
+            I'm actively seeking opportunities in Security Analysis and IT Security Management. Open to networking, collaboration, and discussing cybersecurity challenges.
+        </p>
+
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/kelechiezeofor" class="contact-link" target="_blank">
+                LinkedIn
+            </a>
+            <a href="https://github.com/kelecie" class="contact-link" target="_blank">
+                GitHub
+            </a>
+            <a href="mailto:Ezeoforkelechi@gmail.com" class="contact-link">
+                Email
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <footer class="footer">
+        <p>Last Updated: January 2025</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-theme');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            
+            // Save theme preference
+            const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+</html>
